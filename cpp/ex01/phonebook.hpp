@@ -1,16 +1,17 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/02 20:09:47 by mgavornik        ###   ########.fr       */
+/*   Updated: 2025/11/04 14:34:22 by mgavorni         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
-#pragma once
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include "contact.hpp"
 
@@ -25,7 +26,22 @@ class PhoneBook
         void searchContact();
         void processCmd(std::string& cmd);
         
+        enum Fields {
+            INDEX = 0,
+            FIRST_NAME,
+            LAST_NAME,
+            NICKNAME,
+            PHONE_NUMBER,
+            COUNT
+        };
+        
+        enum Commands {
+            ADD = 0,
+            SEARCH,
+            EXIT,
+        }
     private:
+        enum {COL_WIDTH = 10};
         Contact _contacts[8];
         size_t  _contact_count;
 
