@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:41:52 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/04 14:18:20 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/07 16:12:56 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,5 @@ class Contact
                 _phone_number, 
                 _darkest_secret;
 };
+
+#endif

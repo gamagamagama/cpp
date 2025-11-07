@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/04 14:34:22 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/07 16:24:35 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ class PhoneBook
     public:
         PhoneBook(); //constructor
         ~PhoneBook(); //destructor
-        
-        void addContact();
-        void searchContact();
-        void processCmd(std::string& cmd);
-        
+            
         enum Fields {
             INDEX = 0,
             FIRST_NAME,
@@ -38,8 +34,15 @@ class PhoneBook
         enum Commands {
             ADD = 0,
             SEARCH,
-            EXIT,
-        }
+            EXIT
+        };
+        void addContact();
+        void searchContact();
+        void processCmd(std::string& cmd);
+        void processCmdADD(Commands cmd);
+        void processCmdSEARCH(Commands cmd);
+        void processCmdEXIT(Commands cmd);
+        
     private:
         enum {COL_WIDTH = 10};
         Contact _contacts[8];
@@ -58,3 +61,5 @@ class PhoneBook
         void contactHeader() const; 
         void displayContact(int index) const;
 };
+
+#endif
