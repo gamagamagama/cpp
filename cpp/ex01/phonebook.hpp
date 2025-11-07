@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/07 16:24:35 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:26:01 by mgavornik        ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
@@ -36,6 +36,7 @@ class PhoneBook
             SEARCH,
             EXIT
         };
+        void errorHandler(void);
         void addContact();
         void searchContact();
         void processCmd(std::string& cmd);
