@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/07 18:22:59 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:38:49 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ class PhoneBook
         ~PhoneBook(); //destructor
             
         enum Fields {
-            INDEX = 0,
-            FIRST_NAME,
+            FIRST_NAME = 0,
             LAST_NAME,
             NICKNAME,
             PHONE_NUMBER,
             DARKEST_SECRET,
+            EMPTY,
             COUNT
         };
         
@@ -37,13 +37,22 @@ class PhoneBook
             SEARCH,
             EXIT
         };
-        void errorHandler(void);
-        void addContact();
+        void errorHandler(Fields field);
+        void addContact(int identifier);
         void searchContact();
         void processCmd(std::string& cmd);
         void processCmdADD(Commands cmd);
         void processCmdSEARCH(Commands cmd);
         void processCmdEXIT(Commands cmd);
+        int addDS(int i, Fields field);
+        int addPN(int i, Fields field);
+        int addNN(int i, Fields field);
+        int addLN(int i, Fields field);
+        int addFN(int i, Fields field);
+
+
+
+
         
     private:
         enum {COL_WIDTH = 10};

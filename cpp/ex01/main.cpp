@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 15:34:56 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/07 18:11:44 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:59:16 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(void)
     PhoneBook PB;
     std::string input;
     while(true){
+        std::cout << "Enter command: ";
         std::getline(std::cin, input);
         if(input.compare("EXIT") == 0)
             break;

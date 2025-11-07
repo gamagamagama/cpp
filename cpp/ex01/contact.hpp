@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:41:52 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/07 16:12:56 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:49:59 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ class Contact
                         st_str nickname, 
                         st_str phone_number, 
                         st_str darkest_secret);
+        bool isEmpty() const;
+        static bool isAlpha(const st_str& str);
+        static bool isNumber(const st_str& str);
+        static bool isAlphaNum(const st_str& str);
     
         st_str getFirstName() const;
         st_str getLastName() const;
