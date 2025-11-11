@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:34:40 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/10 11:34:09 by mgavornik        ###   ########.fr       */
+/*   Updated: 2025/11/11 14:35:29 by mgavorni         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 
 #include "phonebook.hpp"
@@ -31,6 +31,13 @@ void PhoneBook::inputHandler(Fields field)
 }
 void PhoneBook::contactHeader(void) const
 {
+    for(int i = 0; i < (COL_WIDTH*5)-5; i++)
+        std::cout << '=';
+    std::cout << std::endl;
+    std::cout << std::setw(((COL_WIDTH*5)) / 2) << "PHONEBOOK" << std::endl;
+    for(int i = 0; i < (COL_WIDTH*5)-5; i++)
+            std::cout << '_';
+    std::cout << std::endl;
     std::cout << std::right << std::setw(COL_WIDTH) << "index";
     std::cout << "|";
     std::cout << std::right << std::setw(COL_WIDTH) << "first name";
@@ -41,6 +48,32 @@ void PhoneBook::contactHeader(void) const
     std::cout << "|";
     std::cout << std::endl;
 }
+static std::string formatField(const std::string& s, std::size_t width)
+{
+    if (s.length() > width) {
+        return s.substr(0, width - 1) + '.';
+    }
+    return s;
+}
+
+void PhoneBook::ContactAlignment(Contact contact, size_t index) const
+{
+
+   
+    std::cout << std::right << std::setw(COL_WIDTH) << index;
+    std::cout << "|";
+    std::cout << std::right << std::setw(COL_WIDTH) 
+              << formatField(contact.getFirstName(), COL_WIDTH);
+    std::cout << "|";
+    std::cout << std::right << std::setw(COL_WIDTH) 
+              << formatField(contact.getLastName(), COL_WIDTH);
+    std::cout << "|";
+    std::cout << std::right << std::setw(COL_WIDTH) 
+              << formatField(contact.getNickName(), COL_WIDTH);
+    std::cout << "|";
+    std::cout << std::endl;
+}
+
 
 void PhoneBook::addContact()
 {
@@ -96,24 +129,29 @@ void PhoneBook::addContact()
 void PhoneBook::searchContact()
 {
     for (size_t i = 0; i < _contact_count; i++) {
-        std::cout << _contacts[i].getFirstName() << std::endl;
-        std::cout << _contacts[i].getLastName() << std::endl;
-        std::cout << _contacts[i].getNickName() << std::endl;
-        std::cout << _contacts[i].getPhoneNumber() << std::endl;
-        std::cout << _contacts[i].getDarkestSecret() << std::endl;
+        std::cout << "First name: " << _contacts[i].getFirstName() << std::endl;
+        std::cout << "Last name: "<<_contacts[i].getLastName() << std::endl;
+        std::cout << "Nickname: " << _contacts[i].getNickName() << std::endl;
+        std::cout << "Phone number: "<<_contacts[i].getPhoneNumber() << std::endl;
+        std::cout << "Darkest secret: "<<_contacts[i].getDarkestSecret() << std::endl;
     }
 }
 void PhoneBook::processCmdADD(Commands Cmd)
 {
     std::cout << Cmd << std::endl;
     addContact();
+
+    
 }
 void PhoneBook::processCmdSEARCH(Commands Cmd)
 {
+    // int index = 0;
     std::cout << Cmd << std::endl;
     std::cout << "SEARCH\n";
     contactHeader();
-    searchContact();
+    for(size_t i = 0; i < _contact_count; i++)
+        ContactAlignment(_contacts[i], i + 1);
+  //  ContactAlignment(_contacts[_contact_count - 1]);
 }
 void PhoneBook::processCmdEXIT(Commands Cmd)
 {

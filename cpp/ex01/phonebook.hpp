@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/10 11:32:34 by mgavornik        ###   ########.fr       */
+/*   Updated: 2025/11/11 14:35:00 by mgavorni         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
@@ -45,7 +45,7 @@ class PhoneBook
         void processCmdADD(Commands cmd);
         void processCmdSEARCH(Commands cmd);
         void processCmdEXIT(Commands cmd);
- 
+        void ContactAlignment(Contact contact, size_t index) const;
 
 
 

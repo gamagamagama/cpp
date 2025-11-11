@@ -1,26 +1,26 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:34:04 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/10 11:13:44 by mgavornik        ###   ########.fr       */
+/*   Updated: 2025/11/11 14:37:15 by mgavorni         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "contact.hpp"
 
-Contact::Contact()
-{
-    std::cout << "Contact Constructor" << std::endl;
-}
+Contact::Contact(){}
+// {
+//     std::cout << "Contact Constructor" << std::endl;
+// }
 
-Contact::~Contact()
-{
-    std::cout << "Contact Destructor" << std::endl;
-}
+Contact::~Contact(){}
+// {
+//     std::cout << "Contact Destructor" << std::endl;
+// }
 bool Contact::isNumber(const std::string& str)
 {
     for (size_t i = 0; i < str.length(); i++)
