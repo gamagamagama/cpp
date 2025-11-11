@@ -1,20 +1,21 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/07 19:38:49 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/10 11:32:34 by mgavornik        ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
 #include "contact.hpp"
-
+#include <string>
+#include <iomanip>
 
 class PhoneBook
 {
@@ -37,19 +38,14 @@ class PhoneBook
             SEARCH,
             EXIT
         };
-        void errorHandler(Fields field);
-        void addContact(int identifier);
+        void inputHandler(Fields field);
+        void addContact();
         void searchContact();
         void processCmd(std::string& cmd);
         void processCmdADD(Commands cmd);
         void processCmdSEARCH(Commands cmd);
         void processCmdEXIT(Commands cmd);
-        int addDS(int i, Fields field);
-        int addPN(int i, Fields field);
-        int addNN(int i, Fields field);
-        int addLN(int i, Fields field);
-        int addFN(int i, Fields field);
-
+ 
 
 
 

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:41:52 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/07 19:49:59 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/10 09:43:36 by mgavornik        ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
@@ -16,7 +16,6 @@
 #include <iostream>
 #include <string>
 
-typedef std::string st_str;
 
 /**
     first name, last name, nickname, phone number, and
@@ -28,27 +27,27 @@ class Contact
         Contact();
         ~Contact();
         
-        void setContact(st_str first_name,
-                        st_str last_name, 
-                        st_str nickname, 
-                        st_str phone_number, 
-                        st_str darkest_secret);
-        bool isEmpty() const;
-        static bool isAlpha(const st_str& str);
-        static bool isNumber(const st_str& str);
-        static bool isAlphaNum(const st_str& str);
+        void setContact(std::string first_name,
+                        std::string last_name, 
+                        std::string nickname, 
+                        std::string phone_number, 
+                        std::string darkest_secret);
+        static bool isEmpty(const std::string& str);
+        static bool isAlpha(const std::string& str);
+        static bool isNumber(const std::string& str);
+        static bool isAlphaNum(const std::string& str);
     
-        st_str getFirstName() const;
-        st_str getLastName() const;
-        st_str getNickName() const;
-        st_str getPhoneNumber() const;
-        st_str getDarkestSecret() const;
+        std::string getFirstName() const;
+        std::string getLastName() const;
+        std::string getNickName() const;
+        std::string getPhoneNumber() const;
+        std::string getDarkestSecret() const;
     private:
-        st_str  _first_name, 
-                _last_name, 
-                _nickname, 
-                _phone_number, 
-                _darkest_secret;
+        std::string _first_name, 
+                    _last_name, 
+                    _nickname, 
+                    _phone_number, 
+                    _darkest_secret;
 };
 
 #endif

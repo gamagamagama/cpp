@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgavornik <mgavornik@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:34:04 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/07 19:55:49 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/10 11:13:44 by mgavornik        ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "contact.hpp"
 
@@ -21,7 +21,7 @@ Contact::~Contact()
 {
     std::cout << "Contact Destructor" << std::endl;
 }
-bool Contact::isNumber(const st_str& str)
+bool Contact::isNumber(const std::string& str)
 {
     for (size_t i = 0; i < str.length(); i++)
     {
@@ -30,7 +30,7 @@ bool Contact::isNumber(const st_str& str)
     }
     return true;
 }
-bool Contact::isAlpha(const st_str& str)
+bool Contact::isAlpha(const std::string& str)
 {
     for (size_t i = 0; i < str.length(); i++)
     {
@@ -39,7 +39,7 @@ bool Contact::isAlpha(const st_str& str)
     }
     return true;
 }
-bool Contact::isAlphaNum(const st_str& str)
+bool Contact::isAlphaNum(const std::string& str)
 {
     for (size_t i = 0; i < str.length(); i++)
     {
@@ -48,11 +48,36 @@ bool Contact::isAlphaNum(const st_str& str)
     }
     return true;
 }
-void Contact::setContact(st_str first_name,
-                st_str last_name, 
-                st_str nickname, 
-                st_str phone_number, 
-                st_str darkest_secret)
+bool Contact::isEmpty(const std::string& str)
+{
+    if (!str.empty())
+        return false;
+    return true;
+}
+std::string Contact::getFirstName() const { 
+    return _first_name; 
+}
+
+std::string Contact::getLastName() const { 
+    return _last_name; 
+}
+
+std::string Contact::getNickName() const { 
+    return _nickname; 
+}
+
+std::string Contact::getPhoneNumber() const { 
+    return _phone_number; 
+}
+
+std::string Contact::getDarkestSecret() const { 
+    return _darkest_secret; 
+}
+void Contact::setContact(std::string first_name,
+                std::string last_name, 
+                std::string nickname, 
+                std::string phone_number, 
+                std::string darkest_secret)
                 {
                     _first_name = first_name;
                     _last_name = last_name;
