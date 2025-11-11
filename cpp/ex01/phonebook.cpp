@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:34:40 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/11 14:35:29 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:10:37 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,9 @@ void PhoneBook::inputHandler(Fields field)
 }
 void PhoneBook::contactHeader(void) const
 {
-    for(int i = 0; i < (COL_WIDTH*5)-5; i++)
-        std::cout << '=';
-    std::cout << std::endl;
-    std::cout << std::setw(((COL_WIDTH*5)) / 2) << "PHONEBOOK" << std::endl;
-    for(int i = 0; i < (COL_WIDTH*5)-5; i++)
-            std::cout << '_';
-    std::cout << std::endl;
+    Delimeter('=', "");
+    Delimeter(' ', "PHONEBOOK");
+    Delimeter('-', "");
     std::cout << std::right << std::setw(COL_WIDTH) << "index";
     std::cout << "|";
     std::cout << std::right << std::setw(COL_WIDTH) << "first name";
@@ -47,6 +43,7 @@ void PhoneBook::contactHeader(void) const
     std::cout << std::right << std::setw(COL_WIDTH) << "nickname";
     std::cout << "|";
     std::cout << std::endl;
+    Delimeter('-', "");
 }
 static std::string formatField(const std::string& s, std::size_t width)
 {
@@ -58,8 +55,7 @@ static std::string formatField(const std::string& s, std::size_t width)
 
 void PhoneBook::ContactAlignment(Contact contact, size_t index) const
 {
-
-   
+    Delimeter('=', "");
     std::cout << std::right << std::setw(COL_WIDTH) << index;
     std::cout << "|";
     std::cout << std::right << std::setw(COL_WIDTH) 
@@ -120,38 +116,99 @@ void PhoneBook::addContact()
         }
     } while (!Contact::isAlphaNum(darkest_secret) || Contact::isEmpty(darkest_secret));
     
-    _contacts[_contact_count].setContact(first_name, last_name, nickname, phone_number, darkest_secret);
-    _contact_count++;
+    size_t last_index = (_contact_count < (size_t)MAX_CONTACTS) ? _contact_count : (size_t)MAX_CONTACTS -1;
+    
+    for (size_t i = last_index; i > 0; --i)
+        _contacts[i] = _contacts[i - 1];
+    
+    _contacts[0].setContact(first_name, last_name, nickname, phone_number, darkest_secret);
+   
+    if (_contact_count < (size_t)MAX_CONTACTS)
+        ++_contact_count;
     
     std::cout << "Contact added successfully!" << std::endl;
 }
 
-void PhoneBook::searchContact()
-{
-    for (size_t i = 0; i < _contact_count; i++) {
-        std::cout << "First name: " << _contacts[i].getFirstName() << std::endl;
-        std::cout << "Last name: "<<_contacts[i].getLastName() << std::endl;
-        std::cout << "Nickname: " << _contacts[i].getNickName() << std::endl;
-        std::cout << "Phone number: "<<_contacts[i].getPhoneNumber() << std::endl;
-        std::cout << "Darkest secret: "<<_contacts[i].getDarkestSecret() << std::endl;
-    }
-}
 void PhoneBook::processCmdADD(Commands Cmd)
 {
     std::cout << Cmd << std::endl;
     addContact();
 
+}
+void PhoneBook::displayContact(int index) const
+{
+    if (index < 0 || static_cast<size_t>(index) >= _contact_count) {
+        std::cout << "Index out of range" << std::endl;
+        return;
+    }
+
+    const Contact& c = _contacts[static_cast<size_t>(index)];
+    std::cout << "First name: "    << c.getFirstName()    << std::endl;
+    std::cout << "Last name: "     << c.getLastName()     << std::endl;
+    std::cout << "Nickname: "      << c.getNickName()     << std::endl;
+    std::cout << "Phone number: "  << c.getPhoneNumber()  << std::endl;
+    std::cout << "Darkest secret: "<< c.getDarkestSecret()<< std::endl;
     
 }
+
+void PhoneBook::Delimeter(char c, const std::string& str) const
+{
+    int total = (COL_WIDTH * 5) - 5;
+    int str_len = str.length();
+    int l = (total - str_len) / 2;
+    int r = total - l - str_len;
+    std::cout << std::string(l, c)
+              << str
+              << std::string(r, c)
+              << std::endl;
+}
+
+int getnum(const std::string& str) 
+{
+    if (!std::isdigit(str[0]) || str.length() != 1)
+        return -1;    
+    int num = 0;
+    char c = str[0];
+    if (c < '0' || c > '9')
+        return -1;
+    else
+        num = num * 10 + (c - '0');
+    return num;
+}
+
 void PhoneBook::processCmdSEARCH(Commands Cmd)
 {
-    // int index = 0;
+    size_t i =0;
     std::cout << Cmd << std::endl;
     std::cout << "SEARCH\n";
-    contactHeader();
-    for(size_t i = 0; i < _contact_count; i++)
+ 
+    if (_contact_count == 0) {
+        contactHeader();
+        Delimeter('x', "- Phonebook is empty -");
+        return;
+    }
+    else {
+        contactHeader();
+    }
+    do {
         ContactAlignment(_contacts[i], i + 1);
-  //  ContactAlignment(_contacts[_contact_count - 1]);
+        i++;
+    }
+    while( i < _contact_count);
+
+    std::string strline;
+    while (true) {
+        std::cout << "Enter index of the contact you want to see: ";
+        std::getline(std::cin, strline);
+        std::cout << strline << std::endl;
+        int index = getnum(strline);
+        if (index < 1 || index > (int) _contact_count) {
+            std::cout << "Index out of range you bitch" << std::endl;
+            continue;
+        }
+        displayContact((index - 1));
+        return;
+    }
 }
 void PhoneBook::processCmdEXIT(Commands Cmd)
 {

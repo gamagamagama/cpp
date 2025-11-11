@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/11 14:35:00 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:11:44 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "contact.hpp"
 #include <string>
 #include <iomanip>
+
+#define MAX_CONTACTS 8
 
 class PhoneBook
 {
@@ -40,19 +42,18 @@ class PhoneBook
         };
         void inputHandler(Fields field);
         void addContact();
-        void searchContact();
         void processCmd(std::string& cmd);
         void processCmdADD(Commands cmd);
         void processCmdSEARCH(Commands cmd);
         void processCmdEXIT(Commands cmd);
         void ContactAlignment(Contact contact, size_t index) const;
-
+        void Delimeter(char c, const std::string& str) const;
 
 
         
     private:
         enum {COL_WIDTH = 10};
-        Contact _contacts[8];
+        Contact _contacts[MAX_CONTACTS];
         size_t  _contact_count;
 
         /**  
