@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 15:34:02 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/12 17:17:05 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:23:31 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int getNum(const std::string& str)
 
 std::string getStr(const std::string& msg) {
     std::string str;
-    std::cout << msg << std::endl;
+    std::cout << msg;
     std::getline(std::cin, str);
     return (str);
 }
