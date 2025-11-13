@@ -1,29 +1,19 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   inc.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/13 14:46:45 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/13 18:01:57 by mgavorni         ###   ########.fr       */
+/*   Created: 2025/11/13 18:56:57 by mgavorni          #+#    #+#             */
+/*   Updated: 2025/11/13 18:57:12 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include "Weapon.hpp"
+#ifndef INC_HPP
+#define INC_HPP
 
-Weapon::Weapon(std::string type)
-{
-    this->type = type;
-}
-Weapon::~Weapon()
-{
-}
-const std::string Weapon::getType() const
-{
-    return this->type;
-}
-void Weapon::setType(std::string type)
-{
-    this->type = type;
-}
+#include <iostream>
+#include <string>
+
+#endif
