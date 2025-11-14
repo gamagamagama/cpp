@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 18:56:57 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/13 18:57:12 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/14 10:24:43 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,6 +14,7 @@
 #define INC_HPP
 
 #include <iostream>
+#include <fstream>
 #include <string>
 
 #endif
